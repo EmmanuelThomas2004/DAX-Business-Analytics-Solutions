@@ -1,0 +1,48 @@
+Q1. Calculate Total Sales.
+
+DAX:
+Total Sales =
+SUM(Sales[SalesAmount])
+
+
+Q2. Calculate Total Profit.
+
+DAX:
+Total Profit =
+SUM(Sales[Profit])
+
+
+Q3. Calculate Profit Margin.
+
+DAX:
+Profit Margin =
+DIVIDE(
+    [Total Profit],
+    [Total Sales],
+    0
+)
+
+
+Q4. Calculate Sales for the Previous Year.
+
+DAX:
+Previous Year Sales =
+CALCULATE(
+    [Total Sales],
+    SAMEPERIODLASTYEAR('Date'[Date])
+)
+
+
+Q5. Calculate Year-over-Year Sales Growth.
+
+DAX:
+YoY Sales Growth =
+VAR CurrentSales = [Total Sales]
+VAR PreviousSales = [Previous Year Sales]
+
+RETURN
+DIVIDE(
+    CurrentSales - PreviousSales,
+    PreviousSales,
+    0
+)
